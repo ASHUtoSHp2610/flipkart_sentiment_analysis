@@ -1,0 +1,19 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div class="container" >
+        <h1>Welcome to Sentiment Analyzer</h1>
+        <p>Please select an option:</p>
+        <div class="btn-wrapper">
+            <a href="/analyze" class="btn">Go to Analyzer</a>
+            <a href="/login" class="btn">Login</a>
+        </div>
+    </div>
+</body>
+</html>

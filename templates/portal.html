@@ -1,0 +1,34 @@
+<!-- portal.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="container">
+        <h1>Review Form</h1>
+        <form id="reviewForm" method="post" action="/analyze"> <!-- Added method and action -->
+            <div class="form-group">
+                <label for="rating">Rate your experience:</label>
+                <div class="rating" id="rating">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="review">Write your review:</label>
+                <textarea id="review" name="review" rows="5" placeholder="Write your review here..."></textarea>
+            </div>
+            <button type="submit" id="analyzeBtn">Analyze</button> <!-- Changed to type="submit" -->
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/portal.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#4114e6, #900a63); /* Gradient background */
+    color: #fff; /* Text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.container {
+        max-width: 800px; /* Limit container width */
+        padding: 50px;
+        border: 2px solid #ece9e3; /* Border style for the container */
+        border-radius: 30px; /* Border radius */
+        background-color: #18b73b;
+        box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.5);
+    }
+
+h1 {
+    margin-top: 0; /* Remove default margin */
+    color: #040809; /* Header color */
+    font-size: 2.5rem;
+    /* font-size: xx-large; */
+    font-weight: bolder;
+    text-shadow: 2px 5px 4px #edf4f6;
+}
+
+p {
+    font-size: 2.1rem; /* Increase paragraph font size */
+    text-shadow: 5px 5px 4px #040809;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Add margin to the button wrapper */
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 24px;
+    background-color: #f39c12; /* Button background color */
+    color: #333; /* Button text color */
+    text-decoration: none;
+    border-radius: 100px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth button color transition */
+    margin: 30px; /* Add margin to buttons */
+    border: 2px solid #090909; /* Button border */
+    font-size: 1.1rem; /* Button font size */
+    cursor: pointer; /* Cursor style */
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover {
+    background-color: #e67e22; /* Darker button color on hover */
+}
+
+/* Navigation links */
+.nav-links {
+    margin-top: 20px; /* Space between header and navigation links */
+}
+
+.nav-links a {
+    color: #f39c12; /* Navigation link color */
+    text-decoration: none;
+    margin: 0 10px; /* Spacing between navigation links */
+    transition: color 0.3s ease; /* Smooth link color transition */
+    font-size: 1.1rem; /* Navigation link font size */
+}
+
+.nav-links a:hover {
+    color: #d35400; /* Darker link color on hover */
+}
