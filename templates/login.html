@@ -1,88 +1,29 @@
-<!-- login.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>login</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-</head>
-<body>
+<link href="/static/css/login.css" rel="stylesheet">
+<script src="/static/js/login.js"></script>
 
-<div id="form">
-  <div class="container">
-    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-md-8 col-md-offset-2">
-      <div id="userform">
-        <ul class="nav nav-tabs nav-justified" role="tablist">
-          <li class="active"><a href="#signup"  role="tab" data-toggle="tab">Sign up</a></li>
-          <li><a href="#login"  role="tab" data-toggle="tab">Log in</a></li>
-        </ul>
-        <div class="tab-content">
-          <div class="tab-pane fade in" id="login">
-            <h2 class="text-uppercase text-center"> Log in</h2>
-            <form method="post" action="{{ url_for('login') }}"> <!-- Changed 'login_route' to 'login' -->
-              <div class="form-group">
-                <label> Your Email<span class="req">*</span> </label>
-                <input type="email" class="form-control" name="username" required data-validation-required-message="Please enter your email address." autocomplete="off"> <!-- Changed 'email' to 'username' -->
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="form-group">
-                <label> Password<span class="req">*</span> </label>
-                <input type="password" class="form-control" name="password" required data-validation-required-message="Please enter your password" autocomplete="off">
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="mrgn-30-top">
-                <button type="submit" class="btn btn-larger btn-block">Log in</button>
-              </div>
-            </form>
-          </div>
-          <div class="tab-pane fade active in" id="signup">
-            <h2 class="text-uppercase text-center"> Sign Up for Free</h2>
-            <form method="post" action="{{ url_for('signup') }}"> <!-- Adjust endpoint for signup -->
-              <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                  <div class="form-group">
-                    <label>First Name<span class="req">*</span> </label>
-                    <input type="text" class="form-control" name="first_name" required data-validation-required-message="Please enter your name." autocomplete="off">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                  <div class="form-group">
-                    <label> Last Name<span class="req">*</span> </label>
-                    <input type="text" class="form-control" name="last_name" required data-validation-required-message="Please enter your name." autocomplete="off">
-                    <p class="help-block text-danger"></p>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label> Your Email<span class="req">*</span> </label>
-                <input type="email" class="form-control" name="username" required data-validation-required-message="Please enter your email address." autocomplete="off"> <!-- Changed 'email' to 'username' -->
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="form-group">
-                <label> Your Phone<span class="req">*</span> </label>
-                <input type="tel" class="form-control" name="phone" required data-validation-required-message="Please enter your phone number." autocomplete="off">
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="form-group">
-                <label> Password<span class="req">*</span> </label>
-                <input type="password" class="form-control" name="password" required data-validation-required-message="Please enter your password" autocomplete="off">
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="mrgn-30-top">
-                <button type="submit" class="btn btn-larger btn-block">Sign up</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='js/login.js') }}"></script>
-</body>
-</html>
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" action="/portal" method="post">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form><!-- /form -->
+            <a href="/sign" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
