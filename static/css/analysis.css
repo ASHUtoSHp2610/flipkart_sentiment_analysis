@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #4114e6, #900a63); /* Updated gradient background */
+    color: #fff; /* Text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center; /* Center the headings */
+}
+
+p {
+    color: #666;
+    text-align: center; /* Center the paragraphs */
+}

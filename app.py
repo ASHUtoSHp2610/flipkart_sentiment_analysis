@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_from_directory
 
 import joblib
 
@@ -9,44 +9,49 @@ best_rf_model = joblib.load('best_rf_model.pkl')
 tfidf_vectorizer = joblib.load('tfidf_vectorizer.pkl')
 
 
+
 @app.route('/')
 def index():
-    error = request.args.get('error')
-    return render_template('index.html', error=error)
+    return render_template('index.html')
 
-@app.route('/portal')
+@app.route('/portal', methods=['GET', 'POST'])
 def portal():
+    if request.method== 'POST':
+        return render_template('portal.html')
+    else:
         return render_template('portal.html')
 
-@app.route('/login', methods=['POST'])
+@app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == 'POST':
+        # Retrieve form data
+        username = request.form.get('username')
+        password = request.form.get('password')
+    return render_template("login.html")
 
-@app.route('/logout')
-def logout():
-    # Remove the username from the session if it's there
-    session.pop('username', None)
-    return redirect(url_for('index'))
+@app.route("/signup", methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Retrieve form data
+        name = request.form.get('name')
+        phone_no = request.form.get('phone_no')
+        email = request.form.get('email')
+        username = request.form.get('username')
+        password = request.form.get('password')
+    return render_template("sign.html")
 
-@app.route('/signup')
-def sign():
-    return render_template('sign.html')
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
-    if 'username' in session:
-        review = request.form['review']
-        rating = int(request.form['rating'])  # Convert rating to integer
-        # Perform text preprocessing (e.g., tokenization, stop word removal)
-        processed_review = preprocess(review)
-        # Vectorize the review using the TF-IDF vectorizer
-        vectorized_review = tfidf_vectorizer.transform([processed_review])
-        # Predict the sentiment of the review using the trained model
-        sentiment_prediction = best_rf_model.predict(vectorized_review)
-        # Render the template with the prediction result
-        return render_template('analysis_result.html', review=review, rating=rating, sentiment=sentiment_prediction[0])
-    else:
-        return redirect(url_for('index', error=True))
+    review = request.form['review']
+    rating = int(request.form['rating']) 
+    processed_review = preprocess(review)
+
+    vectorized_review = tfidf_vectorizer.transform([processed_review])
+
+    sentiment_prediction = best_rf_model.predict(vectorized_review)
+    
+    return render_template('analysis_result.html', review=review, rating=rating, sentiment=sentiment_prediction[0])
 
 
 def preprocess(text):
